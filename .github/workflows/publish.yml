@@ -36,9 +36,23 @@ jobs:
       # last: the meta package declares them, so publishing it before they exist
       # leaves npm with an unresolvable version. npm refuses a duplicate version,
       # which makes a re-run after a partial publish pick up only what is missing.
+      - name: dry run (verify the pipeline, touch nothing)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.DSHWATCHTOGETHER }}
+        shell: bash
+        run: |
+          for p in dsh-watch-eyes dsh-watch-ears dsh-watch-mouth \
+                   dsh-watch-browser dsh-watch-hands dsh-watch-panel; do
+            pnpm --filter $p publish --access public --no-git-checks --dry-run
+          done
+
       - name: publish services
         env:
           NODE_AUTH_TOKEN: ${{ secrets.DSHWATCHTOGETHER }}
+        # bash explicitly: a Windows runner defaults "run:" to PowerShell, where
+        # "for p in ...; do" is not a loop at all - it silently runs nothing and
+        # the step fails with an empty error.
+        shell: bash
         run: |
           for p in dsh-watch-eyes dsh-watch-ears dsh-watch-mouth \
                    dsh-watch-browser dsh-watch-hands dsh-watch-panel; do
