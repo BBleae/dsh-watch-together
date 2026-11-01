@@ -1,0 +1,11 @@
+/nologo
+/target:library
+/langversion:5
+/utf8output
+/out:"E:\dsh-plugins\dsh-ears\lib\net\Ears.dll"
+/reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\Facades\netstandard.dll"
+/reference:"E:\dsh-plugins\dsh-ears\lib\net\NAudio.Core.dll"
+/reference:"E:\dsh-plugins\dsh-ears\lib\net\NAudio.Wasapi.dll"
+/reference:"E:\dsh-plugins\dsh-ears\lib\net\NAudio.WinMM.dll"
+/reference:"E:\dsh-plugins\dsh-ears\lib\net\NAudio.dll"
+"E:\dsh-plugins\dsh-ears\lib\Ears.cs"

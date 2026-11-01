@@ -1,0 +1,4 @@
+# dsh-watch-mouth bundle patch: hook the plugin into the profile composition.
+- insert:
+    - id: dsh-watch-mouth
+      name: dsh-watch-mouth

@@ -1,0 +1,64 @@
+{
+  "name": "dsh-watch-eyes",
+  "version": "0.1.0",
+  "description": "Live screen eyes for DSH: a resident capture worker plus one vision call, so a text-only model can watch the screen in about a second a frame.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "eyes": "bin/eyes.mjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "os": [
+    "win32"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "manifestVersion": 1
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "author": "Eli-Mao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eli-Mao/dsh-watch-together.git"
+  },
+  "homepage": "https://github.com/Eli-Mao/dsh-watch-together#readme",
+  "bugs": {
+    "url": "https://github.com/Eli-Mao/dsh-watch-together/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "watch-together"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@11.28.5"
+}

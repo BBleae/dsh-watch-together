@@ -1,0 +1,4 @@
+# dsh-watch-browser bundle patch: hook the plugin into the profile composition.
+- insert:
+    - id: dsh-watch-browser
+      name: dsh-watch-browser

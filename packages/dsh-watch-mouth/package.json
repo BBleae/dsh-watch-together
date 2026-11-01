@@ -1,0 +1,67 @@
+{
+  "name": "dsh-watch-mouth",
+  "version": "0.1.0",
+  "description": "The mouth for DSH: one resident daemon that synthesises and plays speech, and exposes the mouth clock an avatar polls.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mouth": "bin/mouth.mjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "os": [
+    "win32"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "manifestVersion": 1
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "msedge-tts": "^2.1.0"
+  },
+  "author": "Eli-Mao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eli-Mao/dsh-watch-together.git"
+  },
+  "homepage": "https://github.com/Eli-Mao/dsh-watch-together#readme",
+  "bugs": {
+    "url": "https://github.com/Eli-Mao/dsh-watch-together/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "watch-together"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@11.28.5"
+}

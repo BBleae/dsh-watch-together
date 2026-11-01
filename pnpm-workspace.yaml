@@ -1,0 +1,12 @@
+# pnpm workspace for the monorepo layout.
+#
+# Publishing is per-package (see .github/workflows/publish.yml); this file only
+# makes a local pnpm install put the siblings in one tree, so the panel's
+# sibling resolution and a from-checkout test install both work.
+packages:
+  - 'packages/*'
+
+# The mouth's Edge fallback package declares a preinstall guard; pnpm blocks
+# dependency build scripts by default. Allowing this one keeps the install quiet.
+onlyBuiltDependencies:
+  - msedge-tts

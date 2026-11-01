@@ -1,0 +1,11 @@
+﻿# Normalise text to LF in the repository, whatever the working copy does.
+# Without this every .mjs/.md file gets a spurious CRLF diff on Windows.
+* text=auto eol=lf
+
+# Windows binaries must never be "fixed"
+*.ps1   text eol=crlf
+*.dll   binary
+*.zip   binary
+*.exe   binary
+*.tgz   binary
+*.pyc   binary

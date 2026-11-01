@@ -1,0 +1,4 @@
+# dsh-watch-hands bundle patch: hook the plugin into the profile composition.
+- insert:
+    - id: dsh-watch-hands
+      name: dsh-watch-hands

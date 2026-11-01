@@ -1,0 +1,4 @@
+# dsh-watch-eyes bundle patch: hook the plugin into the profile composition.
+- insert:
+    - id: dsh-watch-eyes
+      name: dsh-watch-eyes

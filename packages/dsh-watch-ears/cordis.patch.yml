@@ -1,0 +1,4 @@
+# dsh-watch-ears bundle patch: hook the plugin into the profile composition.
+- insert:
+    - id: dsh-watch-ears
+      name: dsh-watch-ears

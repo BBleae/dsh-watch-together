@@ -1,0 +1,67 @@
+{
+  "name": "dsh-watch-ears",
+  "version": "0.1.0",
+  "description": "Hearing for DSH: capture system audio and the microphone, transcribe both with a resident listener so a text-only model can listen continuously.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "ears": "bin/ears.mjs",
+    "ears-companion": "bin/companion.mjs",
+    "ears-live": "bin/live.mjs",
+    "ears-digest": "bin/voice-digest.mjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "os": [
+    "win32"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "manifestVersion": 1
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "author": "Eli-Mao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eli-Mao/dsh-watch-together.git"
+  },
+  "homepage": "https://github.com/Eli-Mao/dsh-watch-together#readme",
+  "bugs": {
+    "url": "https://github.com/Eli-Mao/dsh-watch-together/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "watch-together"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@11.28.5"
+}

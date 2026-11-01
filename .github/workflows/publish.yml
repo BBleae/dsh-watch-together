@@ -1,0 +1,43 @@
+name: publish
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile=false
+
+      # pnpm publish rewrites the meta package's "workspace:*" dependencies into
+      # real version numbers, which npm publish does NOT do. Siblings first, meta
+      # last: the meta package declares them, so publishing it before they exist
+      # leaves npm with an unresolvable version. npm refuses a duplicate version,
+      # which makes a re-run after a partial publish pick up only what is missing.
+      - name: publish services
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          for p in dsh-watch-eyes dsh-watch-ears dsh-watch-mouth \
+                   dsh-watch-browser dsh-watch-hands dsh-watch-panel; do
+            echo "::group::$p"
+            pnpm --filter $p publish --access public --no-git-checks
+            echo "::endgroup::"
+          done
+
+      - name: publish meta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --access public --no-git-checks

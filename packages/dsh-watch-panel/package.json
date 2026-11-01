@@ -1,0 +1,61 @@
+{
+  "name": "dsh-watch-panel",
+  "version": "0.1.0",
+  "description": "Control panel for the watch-together stack: start and stop the resident services, arm the standby, play, and make her talk - all inside the DSH interface.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "watch-together"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots"
+      ]
+    },
+    "manifestVersion": 1
+  },
+  "author": "Eli-Mao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eli-Mao/dsh-watch-together.git"
+  },
+  "homepage": "https://github.com/Eli-Mao/dsh-watch-together#readme",
+  "bugs": {
+    "url": "https://github.com/Eli-Mao/dsh-watch-together/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "os": [
+    "win32"
+  ],
+  "packageManager": "pnpm@11.28.5"
+}
