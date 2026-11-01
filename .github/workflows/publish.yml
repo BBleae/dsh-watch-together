@@ -28,7 +28,7 @@ jobs:
       # which makes a re-run after a partial publish pick up only what is missing.
       - name: publish services
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.DSHWATCHTOGETHER }}
         run: |
           for p in dsh-watch-eyes dsh-watch-ears dsh-watch-mouth \
                    dsh-watch-browser dsh-watch-hands dsh-watch-panel; do
@@ -39,5 +39,5 @@ jobs:
 
       - name: publish meta
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.DSHWATCHTOGETHER }}
         run: pnpm publish --access public --no-git-checks
