@@ -10,9 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # No "version" here on purpose: package.json declares
+      # "packageManager": "pnpm@11.28.5", and pnpm/action-setup REFUSES to run
+      # when both are present ("Multiple versions of pnpm specified"). Letting
+      # the packageManager field be the single source of truth keeps CI and a
+      # local install on the same pnpm.
       - uses: pnpm/action-setup@v4
-        with:
-          version: 11
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
