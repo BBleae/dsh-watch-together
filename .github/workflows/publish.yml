@@ -25,7 +25,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
 
-      - run: pnpm install --frozen-lockfile=false
+      # pnpm 11 skips dependency build scripts by default and exits 1 when it
+      # skipped any - which turned "the install worked" into a red run, before
+      # the publish step was ever reached. Allowing builds here is safe: the only
+      # one in the tree is msedge-tts's "only-allow pnpm" guard.
+      - run: pnpm install --frozen-lockfile=false --config.dangerouslyAllowAllBuilds=true
 
       # pnpm publish rewrites the meta package's "workspace:*" dependencies into
       # real version numbers, which npm publish does NOT do. Siblings first, meta

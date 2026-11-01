@@ -42,9 +42,6 @@
     }
   },
   "license": "MIT",
-  "dependencies": {
-    "msedge-tts": "^2.1.0"
-  },
   "author": "Eli-Mao",
   "repository": {
     "type": "git",
@@ -63,5 +60,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@11.28.5"
+  "packageManager": "pnpm@11.28.5",
+  "optionalDependencies": {
+    "msedge-tts": "^2.1.0"
+  }
 }
