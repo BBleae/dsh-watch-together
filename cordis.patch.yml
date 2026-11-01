@@ -1,4 +1,4 @@
-# dsh-watch-together bundle patch.
+# dsh-watch-stack bundle patch.
 #
 # Deliberately empty. Each sibling (eyes, ears, mouth, browser, hands, panel)
 # ships its own patch and gets mounted by the profile composition as it is

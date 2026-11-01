@@ -1,4 +1,4 @@
-# dsh-watch-together
+# dsh-watch-stack
 
 **给纯文本模型装上眼睛、耳朵和嘴。** 看番、看屏幕、语音通话——它看得见、听得见、说得出。
 
@@ -26,7 +26,7 @@ Windows · DeepSeek Harness 插件 · MIT
 
 ```powershell
 # 从 npm 装：一条命令搞定六个
-dsh plugin --profile desktop add dsh-watch-together
+dsh plugin --profile desktop add dsh-watch-stack
 
 # 或者分开装，只要某几样
 dsh plugin --profile desktop add dsh-watch-eyes dsh-watch-mouth

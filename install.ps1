@@ -1,5 +1,5 @@
 <#
-dsh-watch-together installer.
+dsh-watch-stack installer.
 
 Two ways to install, both without editing DSH itself:
 

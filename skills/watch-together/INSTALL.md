@@ -39,7 +39,7 @@
 | `ears` | `browser` | 能听，但看番时读不到字幕（字幕靠 9222 那个隔离 Chrome） |
 | `panel` | 任何服务 | 面板里对应按钮显示未安装，其他按钮正常 |
 
-**结论：想完整用就装 meta 包 `dsh-watch-together`，它依赖全部六个。**
+**结论：想完整用就装 meta 包 `dsh-watch-stack`，它依赖全部六个。**
 
 ### 内置 inject（DSH 宿主提供的，用户无需处理）
 
@@ -67,7 +67,7 @@
 
 | 包从哪来 | 命令 | 说明 |
 |---|---|---|
-| **npm（已发布）** | `dsh plugin --profile desktop add dsh-watch-together` | 一条命令六个全装，**推荐** |
+| **npm（已发布）** | `dsh plugin --profile desktop add dsh-watch-stack` | 一条命令六个全装，**推荐** |
 | **npm，只要某几样** | `dsh plugin --profile desktop add dsh-watch-eyes dsh-watch-mouth` | 想省事就别拆 |
 | **本地 tgz** | `dsh plugin --profile desktop add .\\dsh-watch-eyes-0.1.0.tgz` | **六个逐个装，别装 meta** |
 | **本地源码目录** | `dsh plugin --profile desktop add link:D:\\...\\packages\\dsh-watch-eyes` | 六个逐个 link，meta 别 link |

@@ -1,7 +1,7 @@
 {
-  "name": "dsh-watch-together",
+  "name": "dsh-watch-stack",
   "version": "0.1.0",
-  "description": "Watch things together with DSH: eyes, ears, mouth, hands and a browser, plus a control panel. Install this one package to get the whole stack.",
+  "description": "Install the whole watch-together stack in one command: eyes, ears, mouth, browser, hands and the control panel.",
   "type": "module",
   "keywords": [
     "dsh",

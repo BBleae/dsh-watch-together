@@ -52,7 +52,7 @@
 
 ## 目录结构
 
-    dsh-watch-together/          ← meta 包根（也发布）
+    dsh-watch-stack/          ← meta 包根（也发布）
       package.json               依赖六个包，写的是 workspace:*
       lib/index.js               空的：六个兄弟各自挂载自己
       cordis.patch.yml           空的：理由同上
@@ -77,7 +77,7 @@
 
 1. **拿 npm token**。`.npmrc` 现在只有镜像源，没有认证。
    `npm login` 或往 repo secrets 里塞 `NPM_TOKEN`。
-2. **建 GitHub 仓库** `Eli-Mao/dsh-watch-together`，
+2. **建 GitHub 仓库** `Eli-Mao/dsh-watch-stack`，
    把 worktree 里的 `packages/` 和根目录 push 上去（`package.json` 里已经写好这个 URL）。
 3. **打 tag 触发发布**：`.github/workflows/publish.yml` 监听 `v*`。
    `git tag v0.1.0 && git push --tags` → 六个包 + meta 包按顺序发。
@@ -90,7 +90,7 @@
     dsh-watch-browser playwright-core
     dsh-watch-hands   无依赖
     dsh-watch-panel   无依赖
-    dsh-watch-together 依赖上面六个 ← 必须最后
+    dsh-watch-stack 依赖上面六个 ← 必须最后
 
 ## 发完怎么验
 
@@ -116,7 +116,7 @@
     dsh-watch-browser-0.1.0.tgz     20 KB
     dsh-watch-hands-0.1.0.tgz       44 KB
     dsh-watch-panel-0.1.0.tgz       16 KB
-    dsh-watch-together-0.1.0.tgz    21 KB   ← workspace:* 已经换成 0.1.0
+    dsh-watch-stack-0.1.0.tgz    21 KB   ← workspace:* 已经换成 0.1.0
 
 打包命令是 pnpm（不是 npm）：`pnpm pack` 会把 workspace 协议改写成版本号，
 `npm pack` 不会，meta 包会带一个装卸不上的 `workspace:*` 出去。
