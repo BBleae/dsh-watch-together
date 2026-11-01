@@ -7,7 +7,10 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    # Windows, because every package declares "os": ["win32"]. On Linux pnpm
+    # reports "Unsupported platform" for each of them and skips the install,
+    # which reads like a broken lockfile rather than a wrong runner.
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       # No "version" here on purpose: package.json declares
