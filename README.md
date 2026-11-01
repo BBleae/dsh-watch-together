@@ -24,17 +24,50 @@ Windows · DeepSeek Harness 插件 · MIT
 
 ## 安装
 
-```powershell
-# 从 npm 装：一条命令搞定六个
-dsh plugin --profile desktop add dsh-watch-stack
+三种方式，**用 npm 那条**，另外两条是给特殊情况的。
 
-# 或者分开装，只要某几样
+### 1. npm（推荐，别人装就用这个）
+
+```powershell
+dsh plugin --profile desktop add dsh-watch-stack
+```
+
+只装其中几个：
+
+```powershell
 dsh plugin --profile desktop add dsh-watch-eyes dsh-watch-mouth
 ```
 
-本地 tgz / 源码目录**不要装 meta 包**（它的依赖是 `workspace:*`，只在发布时
-会被改写成版本号）。本地就把六个包一个个装：细节见
-[AGENT-INSTALL.md](./AGENT-INSTALL.md)。
+### 2. 从 GitHub 装单个包（能用，但别装 meta）
+
+```powershell
+dsh plugin --profile desktop add "github:Eli-Mao/dsh-watch-together#path:packages/dsh-watch-eyes"
+```
+
+**这个模式实测可用**（拉整个仓库，只取指定的子包）。
+但注意：
+
+- **meta 包 `dsh-watch-stack` 不能用这种方式装**。它的依赖写成 `workspace:*`，
+  那是 monorepo 内部写法，GitHub 上没有 workspace，pnpm 会直接报
+  `ERR_PNPM_WORKSPACE_PKG_NOT_FOUND`。
+- 从 GitHub 拉的是**整个仓库**，比 npm 包慢；每个包里也没有 `node_modules`，
+  它的依赖由你的包管理器现装。
+
+### 3. clone 下来自己装
+
+```powershell
+git clone https://github.com/Eli-Mao/dsh-watch-together.git
+cd dsh-watch-together
+pnpm install
+```
+
+然后逐个 link：
+
+```powershell
+dsh plugin --profile desktop add link:$PWD/packages/dsh-watch-eyes
+```
+
+这种方式能看到源码、能改，适合开发或调试。
 
 装完重启 DSH。控制台按钮在对话栏右上角。
 
