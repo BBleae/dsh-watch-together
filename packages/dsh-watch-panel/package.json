@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-panel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Control panel for the watch-together stack: start and stop the resident services, arm the standby, play, and make her talk - all inside the DSH interface.",
   "type": "module",
   "main": "lib/index.js",

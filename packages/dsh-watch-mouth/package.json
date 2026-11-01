@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-mouth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The mouth for DSH: one resident daemon that synthesises and plays speech, and exposes the mouth clock an avatar polls.",
   "type": "module",
   "main": "lib/index.js",

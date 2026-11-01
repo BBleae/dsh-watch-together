@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-ears",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hearing for DSH: capture system audio and the microphone, transcribe both with a resident listener so a text-only model can listen continuously.",
   "type": "module",
   "main": "lib/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-eyes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Live screen eyes for DSH: a resident capture worker plus one vision call, so a text-only model can watch the screen in about a second a frame.",
   "type": "module",
   "main": "lib/index.js",

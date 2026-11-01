@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-stack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Install the whole watch-together stack in one command: eyes, ears, mouth, browser, hands and the control panel.",
   "type": "module",
   "keywords": [

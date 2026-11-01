@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-hands",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The hands for DSH: drive any Windows application the way a person does - find controls by their visible label, click them, type into them, read what they show.",
   "type": "module",
   "main": "lib/index.js",

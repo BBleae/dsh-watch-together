@@ -1,6 +1,6 @@
 {
   "name": "dsh-watch-browser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser control for DSH: drive a real Chromium/Edge window over CDP so the agent can open a page, play a video and verify its own senses.",
   "type": "module",
   "main": "lib/index.js",
