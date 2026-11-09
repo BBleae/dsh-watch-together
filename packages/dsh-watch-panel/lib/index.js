@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { homedir } from 'node:os'
 import { createRequire } from 'node:module'
+import { STATUS_CODES } from 'node:http'
 
 export const name = 'dsh-watch-panel'
 export const inject = ['webServer']
@@ -198,6 +199,9 @@ function json(res, code, obj) {
 //
 // Same approach as dsh-see-now's src/settings-trust.js (Apache-2.0); the code
 // here is this plugin's own.
+//
+// URL keeps the brackets on an IPv6 hostname (new URL('http://[::1]:80').hostname
+// is '[::1]'), so that is the form to match.
 const LOOPBACK_HOSTS = new Set(['127.0.0.1', 'localhost', '[::1]'])
 
 function connectionOf(ctx) {
@@ -270,6 +274,13 @@ function admitRequest(req, connection) {
     return 503
   }
   return structuralRejection(req)
+}
+
+// The body names the refusal the status already gives: 401 is the missing
+// session, 503 a check that failed, anything else what HTTP calls it.
+function refusalText(code) {
+  if (code === 401) return 'not signed in'
+  return String(STATUS_CODES[code] || 'refused').toLowerCase()
 }
 
 async function handle(req, res, sub, q) {
@@ -399,7 +410,7 @@ export function apply(ctx) {
         q = Object.fromEntries(u.searchParams.entries())
       } catch { /* keep defaults */ }
       const refused = admitRequest(req, connectionOf(ctx))
-      if (refused) return json(res, refused, { ok: false, error: refused === 401 ? 'not signed in' : 'forbidden' })
+      if (refused) return json(res, refused, { ok: false, error: refusalText(refused) })
       if (req.method !== 'GET') return json(res, 405, { ok: false, error: 'method not allowed' })
       try {
         return await handle(req, res, sub, q)
