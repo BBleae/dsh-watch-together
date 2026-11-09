@@ -209,9 +209,12 @@ const server = http.createServer(async (req, res) => {
   } else {
     // Loopback without the token still has to look like a program on this
     // machine, not a web page (see browserRefusal). A caller that presents the
-    // token passes on that alone: a page has no way to read it.
+    // token passes on that alone: a page has no way to read it. Compare with the
+    // token that already exists, never ensureToken(): a refused request must not
+    // be able to mint one, write config.json or add a log line.
     const refusal = browserRefusal(req)
-    if (refusal && String(req.headers['x-dsh-watch-hands-token'] || '') !== ensureToken()) {
+    const have = (cfg.api && cfg.api.token) || ''
+    if (refusal && (!have || String(req.headers['x-dsh-watch-hands-token'] || '') !== have)) {
       return send(res, 403, { error: 'forbidden: ' + refusal, refused: true })
     }
   }
