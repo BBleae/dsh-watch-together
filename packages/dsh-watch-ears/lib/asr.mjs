@@ -312,7 +312,14 @@ export async function transcribe(cfg, wavPath, opts = {}) {
       log('siliconflow asr failed: ' + sfError.slice(0, 120))
     }
     // Never leave the user deaf: fall back to local if the network or key fails.
-    const out = await localWhisper.transcribe(cfg, wavPath, opts)
+    // The local path can also throw (worker start timeout); fold that into the
+    // same result so the SiliconFlow error is not lost with it.
+    let out
+    try {
+      out = await localWhisper.transcribe(cfg, wavPath, opts)
+    } catch (e) {
+      out = { error: String(e && e.message).slice(0, 160) }
+    }
     if (!out.error) return { text: out.text, ms: out.ms, bytes: 0, local: true, fallback: true }
     // Both failed: say so for both. The local error alone ("python not found")
     // hides the failure of the backend the user actually picked.
